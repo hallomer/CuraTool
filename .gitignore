@@ -3,3 +3,4 @@ node_modules/
 curatool-a9049-firebase-adminsdk-iwve7-76db36b0e8.json
 uploads
 .DS_Store
+frontend/src/firebaseConfig.js
