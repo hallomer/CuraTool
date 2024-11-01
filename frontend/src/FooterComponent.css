@@ -1,0 +1,26 @@
+.footer-component footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 1rem;
+    background-color: #1F4B6E;
+    color: whitesmoke;
+    font-size: 0.8rem;
+    bottom: 0;
+    position: relative;
+}
+
+.footer-component .footer-social {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-component .footer-social a {
+    color: whitesmoke;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.footer-component .footer-social a:hover {
+    color: #FFA07A;
+}

@@ -1,0 +1,61 @@
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E8F1F6;
+    border-bottom: 0.5rem solid #2A5D80;
+    padding: 1.5rem 2.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.app-header .logo {
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.app-header .logo:hover {
+    transform: scale(1.02);
+}
+
+
+.app-header .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.app-header .nav-item {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2A5D80;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.app-header .nav-item:hover {
+    color: #FFA07A;
+    transform: translateY(-2px);
+}
+
+.app-header .active {
+    color: #FFA07A;
+    font-weight: bold;
+}
+
+.app-header .active:hover {
+    color: #FFA07A;
+}
+
+.user-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+    cursor: pointer;
+}
+  

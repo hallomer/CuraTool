@@ -1,0 +1,173 @@
+.guide-detail-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.guide-detail-container .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.guide-detail-container .back-button {
+  background: none;
+  border: none;
+  color: #2A5D80;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.guide-detail-container .actions button {
+  border: none;
+  color: white;
+  font-family: 'Exo 2', sans-serif;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #FFA07A, #FF7F50); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.guide-detail-container .actions button:hover {
+  background:  linear-gradient(90deg, #FF7F50, #FFA07A);
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+}
+
+.guide-detail-container .actions button:active {
+  transform: translateY(0); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.guide-detail-container .subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+
+  display: flex;
+  gap: 10px;
+}
+
+.guide-detail-container .materials-list {
+  list-style: square;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.guide-detail-container .accordion {
+  margin-bottom: 10px;
+  padding: 15px;
+  background: #F5F5F5;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.guide-detail-container .accordion input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.guide-detail-container .step-image {
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.guide-detail-container .progress-bar {
+  width: 100%;
+  background-color: #E0E0E0;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 20px;
+  margin: 10px 0;
+  position: relative;
+}
+
+.progress-bar.sticky {
+  position: sticky;
+  top: 10px;
+  z-index: 10;
+}
+
+.guide-detail-container .progress {
+  height: 100%;
+  background-color: #FF8C42;
+  transition: width 0.4s ease;
+}
+
+
+.guide-detail-container .safety-tips {
+  background: #FFF3E0;
+  border-left: 5px solid #FF8C42;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+.guide-detail-container .notes-content {
+  background: #E0F7FA;
+  border-left: 5px solid #2A5D80;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 3rem;
+}
+
+.guide-detail-container .toggle-header {
+  cursor: pointer;
+  user-select: none;
+  background: #BBBBBB;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin: 20px 0;
+  display: flex;
+}
+
+.guide-detail-container .arrow {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.guide-detail-container .related-guides-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: left;
+  margin-top: 15px;
+}
+
+.guide-detail-container .related-guide-card {
+  background: #BBBBBB;
+  color: #fff;
+  width: 180px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.guide-detail-container .related-guide-card h3 {
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.guide-detail-container .related-guide-card p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.guide-detail-container .related-guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,110 @@
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('heroBg.png');
+    transition: background-image 0.5s ease;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-section .hero-content {
+    z-index: 2;
+    margin: 4rem;
+}
+
+.hero-section .hero-content .hero-title {
+    font-size: 4rem;
+    color: #2A5D80;
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.8) 100%);
+    padding: 15px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+
+.hero-section .hero-content .hero-subtitle {
+    margin-top: 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #FFA07A;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.8) 100%);
+    padding: 15px 3rem;
+    border-radius: 0 0 15px 15px;
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 2s forwards 0.5s; 
+}
+
+.hero-section .hero-content .cta-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.hero-section .hero-content .cta-buttons .btn-primary {
+    background-color: #FFA07A;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: 14rem;
+    opacity: 0; 
+    animation: fadeIn 2s forwards 0.5s;
+}
+
+.hero-section .hero-content .cta-buttons .btn-primary:hover {
+    box-shadow: 0px 0px 30px rgba(255, 160, 122, 0.8);
+    transform: scale(1.05);
+}
+
+.hero-section .hero-content .cta-buttons .btn-secondary {
+    background-color: transparent;
+    color: #FFA07A;
+    border: 2px solid #FFA07A;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: 14rem;
+    opacity: 0; 
+    animation: fadeIn 2s forwards 0.5s;
+}
+
+.hero-section .hero-content .cta-buttons .btn-secondary:hover {
+    background-color: #FFA07A;
+    color: white;
+    box-shadow: 0px 0px 30px rgba(255, 160, 122, 0.8);
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
