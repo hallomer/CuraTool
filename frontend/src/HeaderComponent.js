@@ -21,12 +21,8 @@ const HeaderComponent = ({ user }) => {
       <NavLink exact to="/">
         <img src={logo} alt="Logo" className="logo" />
       </NavLink>
-      <nav
-        className={`nav-links ${isNavOpen ? 'active' : ''}`}
-        style={{
-          display: isNavOpen ? 'flex' : 'none',
-        }}
-      >
+      <nav className={`nav-links ${isNavOpen ? 'active' : ''}`}>
+
         <NavLink exact to="/" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')} onClick={closeNav}>Home</NavLink>
         <NavLink to="/guides" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')} onClick={closeNav}>Guides</NavLink>
         <NavLink to="/community" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')} onClick={closeNav}>Community</NavLink>

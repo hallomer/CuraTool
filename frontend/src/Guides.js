@@ -6,6 +6,7 @@ import './Guides.css';
 
 
 const BACKEND_BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL;
+const SYMBOL_BASE_URL = process.env.REACT_APP_SYMBOL_BASE_URL;
 
 const Guides = () => {
   const [guides, setGuides] = useState([]);
@@ -84,7 +85,7 @@ const Guides = () => {
 
   const getGuideBackground = (guide) => {
     const color = categoryColors[guide.category] || '#2A5D80';
-    const symbolUrl = guide.symbol ? `url(http://localhost:5000${guide.symbol})` : '';
+    const symbolUrl = guide.symbol ? `url(${SYMBOL_BASE_URL}${guide.symbol})` : '';
     return {
       backgroundColor: color,
       backgroundImage: symbolUrl ? `${symbolUrl}, linear-gradient(${color}, ${color})` : '',
