@@ -8,6 +8,7 @@ import Login from './Login';
 import AssistantWrapper from './AssistantWrapper';
 import HeaderWrapper from './HeaderWrapper';
 import { auth } from './firebaseConfig';
+import About from './About';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/guide/:id" element={<GuideDetail />} />
           <Route path="/community" element={<Community />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <AssistantWrapper />
       </div>

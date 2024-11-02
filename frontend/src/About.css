@@ -1,0 +1,76 @@
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #2A5D80;
+  font-family: 'Exo 2', sans-serif;
+  line-height: 1.6;
+  min-height: 75vh;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #2A5D80;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intro, .mission, .why-curatool, .thank-you {
+  margin-bottom: 20px;
+}
+
+.mission, .why-curatool {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #2A5D80;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #FFA07A;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+strong {
+  color: #2A5D80;
+}
+
+.thank-you {
+  font-size: 1.2em;
+  text-align: center;
+  color: #2A5D80;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+      padding: 2rem;
+  }
+
+  .mission, .why-curatool {
+    padding: 0.5rem;
+  }
+
+  h1 {
+      font-size: 2em;
+  }
+
+  h2 {
+      font-size: 1.6em;
+  }
+
+  .intro, .mission, .why-curatool {
+    text-align: justify;
+    word-spacing: 0.5px;
+  }
+}
