@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faTwitter, faLinkedin, faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
 import './FooterComponent.css';
 
@@ -13,7 +13,7 @@ const FooterComponent = () => {
           © 2024 CuraTool 🇸🇩
         </div>
         <div className="footer-social">
-          <a href="https://github.com/hallomer/sandoog/" aria-label="GitHub">
+          <a href="https://github.com/hallomer/CuraTool" aria-label="GitHub">
             <FontAwesomeIcon icon={faGithub} />
           </a>
           <a href="mailto:hebaaltayeb2@icloud.com" aria-label="Email">
@@ -24,9 +24,6 @@ const FooterComponent = () => {
           </a>
           <a href="https://www.linkedin.com/in/hibaeltayeb/" aria-label="LinkedIn">
             <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-          <a href="https://discordapp.com/users/hallomer" aria-label="Discord">
-            <FontAwesomeIcon icon={faDiscord} />
           </a>
         </div>
       </footer>

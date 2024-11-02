@@ -1,26 +1,46 @@
 .footer-component footer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 1.1rem 1rem;
+    padding: 1.5rem 1rem;
     background-color: #1F4B6E;
     color: whitesmoke;
-    font-size: 0.8rem;
-    bottom: 0;
+    font-size: 0.9rem;
+    text-align: center;
     position: relative;
+}
+
+.footer-component footer span,
+.footer-component footer div {
+    margin-bottom: 0.5rem;
 }
 
 .footer-component .footer-social {
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    margin-top: 0.5rem;
 }
 
 .footer-component .footer-social a {
     color: whitesmoke;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-decoration: none;
 }
 
 .footer-component .footer-social a:hover {
     color: #FFA07A;
+}
+
+
+@media (min-width: 768px) {
+    .footer-component footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer-component footer span,
+    .footer-component footer div {
+        margin-bottom: 0;
+    }
 }
