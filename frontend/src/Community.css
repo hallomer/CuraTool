@@ -1,0 +1,359 @@
+.community-container {
+  padding: 20px;
+  min-height: 75vh;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.community-container .header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.community-container h2 {
+  color: #2A5D80;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.add-post-button {
+  border: none;
+  color: white;
+  font-family: 'Exo 2', sans-serif;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #2A5D80, #1F4A66);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.add-post-button:hover {
+  background: linear-gradient(90deg, #1F4A66, #2A5D80);
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+}
+
+.post-button {
+  width: 70%;
+  padding: px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.8rem;
+  background: #2A5D80;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #2A5D80;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-content .post-textarea {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Exo 2', sans-serif;
+  resize: none;
+  overflow: hidden; 
+}
+
+.post-close-modal {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  color: #FFA07A;
+}
+
+.image-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.image-modal-close:hover, .post-close-modal:hover {
+  transform: rotate(90deg);
+}
+
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.post {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding: 1.5rem;
+  border: 2px solid #2A5D80;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-date,
+.comment-date {
+  font-size: 0.8em;
+  color: #777;
+}
+
+.comments-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFA07A;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.comments-button:hover {
+  background-color: #ff8a5a;
+}
+
+.comment-icon {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.comments {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.comment-header img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.username {
+  font-weight: bold;
+}
+
+
+.comment-body {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 0.5rem;
+  margin-left: 40px;
+}
+
+.comment-body p {
+  margin: 0;
+}
+
+.comment-image , .post-image {
+  max-width: 40%;
+  border-radius: 5px;
+}
+
+
+.delete-icon {
+  color: #FFA07A;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+
+.file-upload-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #2A5D80;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.add-comment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.add-comment .comment-textarea {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Exo 2', sans-serif;
+  resize: none;
+  overflow: hidden; 
+}
+
+.add-comment button {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.8rem;
+  background: #2A5D80;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.post-button:hover, .file-upload-label:hover, .add-comment button:hover {
+  background-color: #ff9770;
+  transform: scale(1.03);
+}
+
+.community-container .rating-buttons {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background-color: #f5f5f5;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.community-container .rating-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+  transition: all 0.2s ease;
+  padding: 2px 8px;
+  outline: none; 
+}
+
+.community-container .rating-button:hover {
+  color: #2A5D80;
+  transform: scale(1.1);
+}
+
+.community-container .rating-button.active {
+  color: #2A5D80;
+}
+
+.community-container .rating-count {
+  font-weight: bold;
+  color: #333;
+  min-width: 20px;
+  text-align: center;
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 5px;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
