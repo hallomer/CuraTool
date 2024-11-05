@@ -369,6 +369,10 @@
   cursor: pointer;
 }
 
+.no-content-message {
+  color: #666;
+}
+
 
 @media (max-width: 768px) {
   .community-container {
