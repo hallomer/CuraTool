@@ -299,6 +299,7 @@ const Community = () => {
                                             }}
                                             readOnly={!user}
                                         />
+                                        <div className="add-comment-row">
                                         <label
                                             htmlFor={`file-upload-${post._id}`}
                                             className="file-upload-label"
@@ -323,6 +324,7 @@ const Community = () => {
                                         >
                                             Add Comment
                                         </button>
+                                        </div>
                                     </div>
                                 </div>
                             )}
@@ -337,7 +339,7 @@ const Community = () => {
             </div>
         )}
         </div>
-        <FooterComponent />
+        <FooterComponent/>
         </>
     );
 };

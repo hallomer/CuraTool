@@ -1,7 +1,8 @@
 .community-container {
   padding: 20px;
-  min-height: 75vh;
+  min-height: 80vh;
   max-width: 800px;
+  margin-bottom: 2rem;
   margin: auto;
   font-family: 'Exo 2', sans-serif;
 }
@@ -279,7 +280,13 @@
   overflow: hidden; 
 }
 
-.add-comment button {
+.add-comment-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-comment  button {
   padding: 5px;
   border: none;
   border-radius: 5px;
@@ -360,4 +367,99 @@
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .community-container {
+    max-width: 80%;
+    min-height: 90vh;
+    margin-bottom: 2rem;
+  }
+
+  .community-container .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .modal-content {
+    padding: 2rem;
+    max-width: 70%;
+  }
+
+  .post-close-modal {
+    top: 5px;
+    right: 15px;
+  }
+
+  .posts {
+    margin-top: 2rem;
+  }
+
+  .post {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .post-header {
+    gap: 0.5rem;
+  }
+
+  .post-header img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .comments-button {
+    font-size: 0.7rem;
+    padding: 7px;
+  }
+
+  .community-container .rating-button {
+    font-size: 0.9rem;
+    padding: 1px 6px;
+  }
+
+  .community-container .rating-count {
+    font-size: 0.9rem; 
+  }
+
+  .comment {
+    margin-top: 0.5rem;
+  }
+
+  .comment-header img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .comment-image {
+    max-width: 30%;
+  }
+
+  .add-comment {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .add-comment .comment-textarea {
+    width: 90%;
+  }
+
+  .add-comment button {
+    width: 80%;
+    padding: 9px;
+  }
+
+  .image-modal img {
+    max-width: 95%;
+    max-height: 95%;
+  }
+
+  .file-upload-label {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
 }
