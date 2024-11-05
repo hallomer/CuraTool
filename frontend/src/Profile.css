@@ -24,7 +24,7 @@
   position: relative;
 }
 
-.close-modal {
+.profile-modal .close-modal {
   position: absolute;
   top: 15px;
   right: 40px;
@@ -36,7 +36,7 @@
   color: #FFA07A;
 }
 
-.close-modal:hover {
+.profile-modal .close-modal:hover {
   transform: rotate(90deg);
 }
 
@@ -132,7 +132,7 @@
   flex-direction: row-reverse;
 }
 
-button {
+.profile-modal button {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
@@ -147,21 +147,22 @@ button:hover {
   transform: scale(1.05);
 }
 
-.delete-btn {
-  background-color: #ff4d4d;
+.profile-modal .delete-btn {
+  background-color: #FFA07A;
   color: white;
+  padding: 9px 15px;
 }
 
-.delete-btn:hover {
-  background-color: #ff1a1a;
+.profile-modal .delete-btn:hover {
+  background-color: #ff8a5a;
 }
 
-.logout-btn {
+.profile-modal .logout-btn {
   background-color: #2A5D80;
   color: white;
 }
 
-.logout-btn:hover {
+.profile-modal .logout-btn:hover {
   background-color: #204a6a;
 }
 
