@@ -11,7 +11,6 @@ const commentSchema = new Schema({
 const ratingSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   value: { type: Number, required: true, enum: [-1, 1] },
-  createdAt: { type: Date, default: Date.now },
 });
 
 const postSchema = new Schema({

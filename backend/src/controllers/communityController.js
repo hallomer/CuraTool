@@ -10,7 +10,12 @@ exports.getAllPosts = async (req, res) => {
       .populate('user', 'username profilePicture uid')
       .populate('comments.user', 'username profilePicture uid')
       .sort({ createdAt: -1 });
-      res.json(posts);
+
+    const postsWithTotalRating = posts.map(post => {
+      const totalRating = post.ratings.reduce((sum, rating) => sum + rating.value, 0);
+      return { ...post.toObject(), totalRating };
+    });
+    res.json(postsWithTotalRating);
   } catch (error) {
     console.error("Error fetching posts:", error);
     res.status(500).json({ error: 'Failed to fetch posts' });
@@ -128,27 +133,29 @@ exports.deleteComment = async (req, res) => {
 
 
 
-
 // Rate a post
 exports.ratePost = async (req, res) => {
   const { postId } = req.params;
   const { value } = req.body;
-
   try {
     const post = await CommunityPost.findById(postId);
     if (!post) return res.status(404).json({ error: 'Post not found' });
-
-    const user = await User.findOne({ uid: req.user.uid });
-    const existingRating = post.ratings.find(rating => rating.user.equals(user._id));
-
+    const userId = req.user.uid;
+    const user = await User.findOne({ uid: userId });
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    const existingRating = post.ratings.find(rating => rating.user.toString() === user._id.toString());
     if (existingRating) {
-      existingRating.value = value;
+      if (existingRating.value === value) {
+        post.ratings = post.ratings.filter(rating => rating.user.toString() !== user._id.toString());
+      } else {
+        existingRating.value = value;
+      }
     } else {
       post.ratings.push({ user: user._id, value });
     }
-
     await post.save();
-    res.json({ message: 'Post rated successfully' });
+    const totalRating = post.ratings.reduce((sum, rating) => sum + rating.value, 0);
+    res.json({ message: 'Rating updated successfully', totalRating });
   } catch (error) {
     console.error("Error rating post:", error);
     res.status(500).json({ error: 'Failed to rate post' });

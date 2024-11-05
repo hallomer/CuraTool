@@ -3,6 +3,9 @@ import axios from 'axios';
 import { auth } from './firebaseConfig';
 import { FaTrash, FaComments, FaImage } from 'react-icons/fa';
 import './Community.css';
+import FooterComponent from './FooterComponent';
+
+
 const Community = () => {
     const [posts, setPosts] = useState([]);
     const [user, setUser] = useState(null);
@@ -11,10 +14,9 @@ const Community = () => {
     const [newCommentData, setNewCommentData] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [expandedPosts, setExpandedPosts] = useState({});
-    const [activeRatings, setActiveRatings] = useState(() => {
-        return JSON.parse(localStorage.getItem('activeRatings')) || {};
+    const [userRatings, setUserRatings] = useState(() => {
+        return JSON.parse(localStorage.getItem('userRatings')) || {};
     });
-
     const [showImageModal, setShowImageModal] = useState(false);
     const [imageSrc, setImageSrc] = useState("");
 
@@ -38,14 +40,20 @@ const Community = () => {
         fetchUser();
         fetchPosts();
     }, []);
+
     const fetchPosts = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_BACKEND_BASE_URL}community`);
-            setPosts(response.data);
+            const fetchedPosts = response.data.map((post) => ({
+                ...post,
+                totalRating: post.totalRating || 0,
+            }));
+            setPosts(fetchedPosts);
         } catch (error) {
             console.error("Error fetching posts:", error);
         }
     };
+
     const handleAddPost = async () => {
         if (!newPostContent.trim()) {
             console.error("Post content cannot be empty");
@@ -109,55 +117,6 @@ const Community = () => {
             console.error("Error deleting comment:", error);
         }
     };
-    const handleRatePost = async (postId, value) => {
-      const currentRating = activeRatings[postId] || 0;
-      let newActiveRatings = { ...activeRatings };
-      let updatedPosts = [...posts];
-  
-      if (currentRating === value) {
-          newActiveRatings[postId] = 0;
-          localStorage.setItem('activeRatings', JSON.stringify(newActiveRatings));
-  
-          updatedPosts = updatedPosts.map(post => {
-              if (post._id === postId) {
-                  post.ratings = post.ratings.filter(rate => rate.value !== value);
-              }
-              return post;
-          });
-  
-          try {
-              await axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}community/${postId}/rate`, {
-                  headers: { Authorization: `Bearer ${await user.getIdToken()}` },
-              });
-          } catch (error) {
-              console.error("Error removing rating:", error);
-          }
-      } else {
-          newActiveRatings[postId] = value;
-          localStorage.setItem('activeRatings', JSON.stringify(newActiveRatings));
-  
-          updatedPosts = updatedPosts.map(post => {
-              if (post._id === postId) {
-                  post.ratings = post.ratings.filter(rate => rate.value !== -value);
-                  post.ratings.push({ value });
-              }
-              return post;
-          });
-  
-          try {
-              await axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}community/${postId}/rate`, { value }, {
-                  headers: { Authorization: `Bearer ${await user.getIdToken()}` },
-              });
-          } catch (error) {
-              console.error("Error rating post:", error);
-          }
-      }
-  
-      setActiveRatings(newActiveRatings);
-      setPosts(updatedPosts);
-  };
-  
-  
     const toggleComments = (postId) => {
         setExpandedPosts((prev) => ({
             ...prev,
@@ -175,9 +134,38 @@ const Community = () => {
           hour12: true,
       };
       return new Date(date).toLocaleDateString(undefined, options);
-  };
+    };
+
+    const handleRatePost = async (postId, value) => {
+    if (!user) {
+        window.location.href = "/login";
+        return;
+    }
+
+    try {
+        await axios.post(
+            `${process.env.REACT_APP_BACKEND_BASE_URL}community/${postId}/rate`,
+            { value },
+            { headers: { Authorization: `Bearer ${await user.getIdToken()}` } }
+        );
+
+        setUserRatings((prevRatings) => {
+            const newRatings = {
+                ...prevRatings,
+                [postId]: value === prevRatings[postId] ? 0 : value,
+            };
+            localStorage.setItem('userRatings', JSON.stringify(newRatings));
+            return newRatings;
+        });
+
+        fetchPosts();
+    } catch (error) {
+        console.error("Error rating post:", error);
+    }
+};
 
     return (
+        <>
         <div className="community-container">
             <div className="header-row">
                 <h1>Community</h1>
@@ -225,8 +213,9 @@ const Community = () => {
             )}
             <div className="posts">
                 {posts.map((post) => {
-                    const currentRating = activeRatings[post._id];
-                    const displayedRating = post.ratings.reduce((sum, rate) => sum + rate.value, 0);
+                    const userRating = userRatings[post._id];
+                    const upArrowColor = userRating === 1 ? '#FFA07A' : '#666';
+                    const downArrowColor = userRating === -1 ? '#FFA07A' : '#666';
                     return (
                         <div key={post._id} className="post">
                             <div className="post-header">
@@ -251,16 +240,16 @@ const Community = () => {
                                 <div className="rating-buttons">
                                     <button
                                         className="rating-button"
-                                        style={{ color: currentRating === 1 ? '#FFA07A' : '#666' }}
                                         onClick={() => handleRatePost(post._id, 1)}
+                                        style={{ color: upArrowColor }}
                                     >
                                         ▲
                                     </button>
-                                    <span className="rating-count">{displayedRating}</span>
+                                    <span className="rating-count">{post.totalRating || 0}</span>
                                     <button
                                         className="rating-button"
-                                        style={{ color: currentRating === -1 ? '#FFA07A' : '#666' }}
                                         onClick={() => handleRatePost(post._id, -1)}
+                                        style={{ color: downArrowColor }}
                                     >
                                         ▼
                                     </button>
@@ -348,6 +337,8 @@ const Community = () => {
             </div>
         )}
         </div>
+        <FooterComponent />
+        </>
     );
 };
 export default Community;

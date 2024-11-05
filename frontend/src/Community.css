@@ -31,6 +31,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
 .add-post-button:hover {
@@ -227,8 +228,13 @@
   margin: 0;
 }
 
-.comment-image , .post-image {
-  max-width: 40%;
+.post-image {
+  max-width: 35%;
+  border-radius: 5px;
+}
+
+.comment-image {
+  max-width: 20%;
   border-radius: 5px;
 }
 
@@ -283,6 +289,7 @@
   background: #2A5D80;
   color: white;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
 }
 
 .post-button:hover, .file-upload-label:hover, .add-comment button:hover {
@@ -315,13 +322,10 @@
 }
 
 .community-container .rating-button:hover {
-  color: #2A5D80;
+  color:  #FFA07A;
   transform: scale(1.1);
 }
 
-.community-container .rating-button.active {
-  color: #2A5D80;
-}
 
 .community-container .rating-count {
   font-weight: bold;
