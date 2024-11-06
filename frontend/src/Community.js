@@ -232,10 +232,10 @@ const Community = () => {
                                 <p>{post.text}</p>
                                 {post.image && (
                                 <img
-                                    src={`${process.env.REACT_APP_UPLOADS_BASE_URL}uploads/${post.image}`}
+                                    src={post.image}
                                     alt="Post"
                                     className="post-image"
-                                    onClick={() => handleImageClick(`${process.env.REACT_APP_UPLOADS_BASE_URL}uploads/${post.image}`)}
+                                    onClick={() => handleImageClick(post.image)}
                                     style={{ cursor: "pointer" }}
                                 />
                                 )}
@@ -281,9 +281,9 @@ const Community = () => {
                                                     {comment.image && (
                                                     <img
                                                         className="comment-image"
-                                                        src={`${process.env.REACT_APP_UPLOADS_BASE_URL}uploads/${comment.image}`}
+                                                        src={comment.image}
                                                         alt="Comment"
-                                                        onClick={() => handleImageClick(`${process.env.REACT_APP_UPLOADS_BASE_URL}uploads/${comment.image}`)}
+                                                        onClick={() => handleImageClick(comment.image)}
                                                         style={{ cursor: "pointer" }}
                                                     />
                                                     )}

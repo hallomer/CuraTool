@@ -25,20 +25,20 @@ exports.getAllPosts = async (req, res) => {
 // Add a new post
 exports.addPost = async (req, res) => {
   const { text } = req.body;
-  const image = req.file ? req.file.filename : '';
-  
+  const image = req.file ? req.file.path : '';
+
   try {
     const user = await User.findOne({ uid: req.user.uid });
     if (!user) return res.status(404).json({ error: 'User not found' });
-    
+
     const newPost = new CommunityPost({
       user: user._id,
       text,
-      image
+      image,
     });
-    
+
     await newPost.save();
-    
+
     res.status(201).json({ message: 'Post created successfully', post: newPost });
   } catch (error) {
     console.error("Error creating post:", error);
@@ -81,21 +81,19 @@ exports.deletePost = async (req, res) => {
 exports.addComment = async (req, res) => {
   const { postId } = req.params;
   const { text } = req.body;
-  const image = req.file ? req.file.filename : '';
-  console.log('Post ID:', postId, 'Text:', text, 'Image:', image);
+  const image = req.file ? req.file.path : ''; 
+
   try {
     const post = await CommunityPost.findById(postId);
     if (!post) return res.status(404).json({ error: 'Post not found' });
-    if (!req.user || !req.user.uid) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
+
     const user = await User.findOne({ uid: req.user.uid });
-    console.log('Found User:', user);
-    
     if (!user) return res.status(404).json({ error: 'User not found' });
+
     const comment = { user: user._id, text, image };
     post.comments.push(comment);
     await post.save();
+
     res.status(201).json({ message: 'Comment added successfully', comment });
   } catch (error) {
     console.error("Error adding comment:", error);

@@ -20,11 +20,6 @@ app.use(express.json());
 
 // Serve static files
 app.use('/symbols', express.static(path.join(__dirname, 'src', 'symbols')));
-const fs = require('fs');
-if (!fs.existsSync('uploads')) {
-    fs.mkdirSync('uploads');
-}
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use('/api/guides', guidesRoutes);

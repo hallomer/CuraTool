@@ -65,7 +65,7 @@ exports.getUserProfile = async (req, res) => {
 // Update user profile
 exports.updateUserProfile = async (req, res) => {
   const { username } = req.body;
-  const profilePicture = req.file ? `/uploads/${req.file.filename}` : null;
+  const profilePicture = req.file ? req.file.path : '';
 
   if (!profilePicture && !username) {
     return res.status(400).json({ error: 'No data to update' });
@@ -81,9 +81,8 @@ exports.updateUserProfile = async (req, res) => {
     }
     
     if (profilePicture) {
-      const fullPhotoUrl = `${req.protocol}://${req.get('host')}${profilePicture}`;
-      updates.photoURL = fullPhotoUrl;
-      updateFields.profilePicture = fullPhotoUrl;
+      updates.photoURL = req.file.path;
+      updateFields.profilePicture = req.file.path;
     }
 
     if (Object.keys(updates).length > 0) {
@@ -107,6 +106,8 @@ exports.updateUserProfile = async (req, res) => {
     res.status(500).json({ error: 'Update failed', details: error.message });
   }
 };
+
+
 
 // Delete user and all their contributions
 exports.deleteUser = async (req, res) => {
