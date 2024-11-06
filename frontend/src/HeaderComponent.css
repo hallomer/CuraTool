@@ -87,12 +87,10 @@
         z-index: 10;
     }
 
-    /* Display nav-links only when the .active class is added */
     .app-header .nav-links.active {
         display: flex;
     }
 
-    /* Display hamburger icon on small screens */
     .hamburger {
         display: block;
     }
