@@ -40,13 +40,19 @@ const AssistantComponent = () => {
     setMessages((prev) => [...prev, userMessage]);
     setQuery('');
     setIsTyping(true);
-
+  
     try {
       const response = await axios.post(`${BACKEND_BASE_URL}assistant/query`, { query });
-      const responseText = response.data.response;
-
+      let responseText = response.data.response;
+  
       if (responseText) {
-        const assistantMessage = { sender: 'assistant', text: responseText };
+        console.log("Full response text:", responseText);
+  
+        const formattedResponseText = responseText
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\n/g, '<br />');
+  
+        const assistantMessage = { sender: 'assistant', text: formattedResponseText };
         setMessages((prev) => [...prev, assistantMessage]);
       } else {
         setMessages((prev) => [...prev, { sender: 'assistant', text: 'Sorry, I could not process your request.' }]);
@@ -56,7 +62,7 @@ const AssistantComponent = () => {
     } finally {
       setIsTyping(false);
     }
-  };
+  };  
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') sendQuery();
@@ -76,7 +82,7 @@ const AssistantComponent = () => {
           <div className="chat-messages" ref={chatRef}>
             {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.sender}`}>
-                <p>{msg.text}</p>
+                <p dangerouslySetInnerHTML={{ __html: msg.text }}></p>
               </div>
             ))}
             {isTyping && <div className="message typing">CuraBot is typing...</div>}

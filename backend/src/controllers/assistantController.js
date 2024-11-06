@@ -3,17 +3,16 @@ const Guide = require('../models/Guide');
 const { queryAssistantAPI } = require('../services/apiClient');
 
 const findRelevantGuides = async (query) => {
-    const keywords = query.split(' ').map(keyword => keyword.trim()).filter(keyword => keyword);
- 
-    const filters = {
+    const filteredQuery = query.replace(/\b(guide|guides)\b/gi, '').trim();
+    const keywords = filteredQuery.split(' ').map(keyword => keyword.trim()).filter(keyword => keyword);
+    const primaryFilters = {
         $or: [
-            { title: { $regex: query, $options: 'i' } },
-            { category: { $regex: query, $options: 'i' } },
-            { 'materials.name': { $regex: query, $options: 'i' } },
-            { 'steps.description': { $regex: query, $options: 'i' } }
+            { title: { $regex: filteredQuery, $options: 'i' } },
+            { category: { $regex: filteredQuery, $options: 'i' } },
+            { 'materials.name': { $regex: filteredQuery, $options: 'i' } },
+            { 'steps.description': { $regex: filteredQuery, $options: 'i' } }
         ]
     };
- 
     const keywordFilters = keywords.map(keyword => ({
         $or: [
             { title: { $regex: keyword, $options: 'i' } },
@@ -22,11 +21,13 @@ const findRelevantGuides = async (query) => {
             { 'steps.description': { $regex: keyword, $options: 'i' } }
         ]
     }));
- 
-    const combinedFilters = { $or: [filters, ...keywordFilters] };
- 
-    return await Guide.find(combinedFilters);
+    const combinedFilters = { $text: { $search: query } };
+    return await Guide.find(combinedFilters)
+    .sort({ score: { $meta: "textScore" } })
+    .limit(2);
+
 };
+
 
 exports.handleAssistantQuery = async (req, res) => {
     const { query } = req.body;
@@ -62,7 +63,7 @@ exports.handleAssistantQuery = async (req, res) => {
 
             Your role is to support healthcare professionals with clear, practical guidance on building essential medical tools using limited resources. 
             Focus on delivering straightforward, actionable answers that work effectively in low-resource and emergency settings. 
-            Keep responses concise and helpful, encouraging users to request more details if they need further information or clarification.
+            Keep responses helpful and as concise and as possible, encouraging users to request more details if they need further information or clarification.
             ${guidesContext ? 'Here are the relevant guides from the website:\n\n' + guidesContext : ''}
         `.trim();
 

@@ -29,6 +29,8 @@ const guideSchema = new mongoose.Schema({
   symbol: String,
 });
 
+guideSchema.index({ title: 'text', intro: 'text', notes: 'text' });
+
 const Guide = mongoose.model('Guide', guideSchema);
 
 module.exports = Guide;
