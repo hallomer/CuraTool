@@ -171,3 +171,76 @@
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+
+@media (max-width: 768px) {
+  .guide-detail-container {
+    padding: 10px;
+    max-width: 90%;
+  }
+
+  .guide-detail-container .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .guide-detail-container .back-button {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .guide-detail-container .actions button {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .guide-detail-container .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
+  .guide-detail-container .materials-list {
+    font-size: 0.9rem;
+  }
+
+  .guide-detail-container .accordion {
+    padding: 10px;
+  }
+
+  .guide-detail-container .step-image {
+    max-width: 100%;
+  }
+
+  .guide-detail-container .progress-bar {
+    height: 15px;
+    margin: 8px 0;
+  }
+
+  .guide-detail-container .safety-tips,
+  .guide-detail-container .notes-content {
+    padding: 8px;
+  }
+
+  .guide-detail-container .toggle-header {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .guide-detail-container .related-guides-list {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .guide-detail-container .related-guide-card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .guide-detail-container .related-guide-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .guide-detail-container .related-guide-card p {
+    font-size: 0.8rem;
+  }
+}

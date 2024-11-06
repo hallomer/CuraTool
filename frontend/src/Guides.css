@@ -8,12 +8,20 @@
     gap: 15px;
     margin-bottom: 15px;
     cursor: pointer;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
 }
-  
+
+.guides-container .filter-bar::-webkit-scrollbar {
+    height: 3px;
+}
+
 .guides-container .filter-item {
     padding: 5px 10px;
     color: #2A5D80;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
   
 .guides-container .filter-item.active {
@@ -124,4 +132,54 @@
   
 .guides-container .view-button:hover {
     color: #fff;
+}
+
+@media (max-width: 768px) {
+    .guides-container {
+        padding: 10px;
+        min-height: 65vh;
+        margin-bottom: 2rem;
+    }
+
+    .guides-container .filter-bar {
+        gap: 10px;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+    }
+
+    .guides-container .filter-item {
+        padding: 4px 8px;
+        font-size: 0.9rem;
+    }
+
+    .guides-container .guide-count {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .guides-container .guide-info {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 8px;
+    }
+
+    .guides-container .sort-dropdown {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .guides-container .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    .guides-container .guide-card {
+        padding: 10px;
+        height: 8rem;
+        max-width: 100%;
+    }
+
+    .guides-container .view-button {
+        font-size: 14px;
+    }
 }

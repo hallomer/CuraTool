@@ -4,7 +4,18 @@ const Guide = require('../models/Guide');
 // Get all guides
 exports.getAllGuides = async (req, res) => {
   try {
-    const guides = await Guide.find();
+    const { title, category, material } = req.query;
+    let filter = {};
+    if (title) {
+      filter.title = { $regex: title, $options: 'i' };
+    }
+    if (category) {
+      filter.category = { $regex: category, $options: 'i' };
+    }
+    if (material) {
+      filter['materials.name'] = { $regex: material, $options: 'i' };
+    }
+    const guides = await Guide.find(filter);
     res.status(200).json(guides);
   } catch (error) {
     res.status(500).json({ error: 'Error fetching guides' });
