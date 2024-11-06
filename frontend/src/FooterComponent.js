@@ -8,11 +8,7 @@ const FooterComponent = () => {
   return (
     <div className="footer-component">
       <footer>
-        <span>Hiba's Portfolio Project for Holberton School.</span>
-        <div>
-          © 2024 CuraTool 🇸🇩
-        </div>
-        <div className="footer-social">
+      <div className="footer-social">
           <a href="https://github.com/hallomer/CuraTool" aria-label="GitHub">
             <FontAwesomeIcon icon={faGithub} />
           </a>
@@ -26,6 +22,10 @@ const FooterComponent = () => {
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
         </div>
+        <div>
+          © 2024 CuraTool 🇸🇩
+        </div>
+        <span>Hiba's Portfolio Project for Holberton School.</span>
       </footer>
     </div>
   );

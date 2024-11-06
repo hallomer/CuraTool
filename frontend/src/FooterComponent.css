@@ -18,7 +18,6 @@
 .footer-component .footer-social {
     display: flex;
     gap: 15px;
-    margin-top: 0.5rem;
 }
 
 .footer-component .footer-social a {
