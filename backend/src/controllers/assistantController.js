@@ -2,6 +2,7 @@ const AssistantQuery = require('../models/AssistantQuery');
 const Guide = require('../models/Guide');
 const { queryAssistantAPI } = require('../services/apiClient');
 
+// Find relevant guides based on user's query
 const findRelevantGuides = async (query) => {
     const filteredQuery = query.replace(/\b(guide|guides)\b/gi, '').trim();
     const keywords = filteredQuery.split(' ').map(keyword => keyword.trim()).filter(keyword => keyword);
@@ -29,6 +30,7 @@ const findRelevantGuides = async (query) => {
 };
 
 
+// Handle assistant query endpoint
 exports.handleAssistantQuery = async (req, res) => {
     const { query } = req.body;
     if (!query) {

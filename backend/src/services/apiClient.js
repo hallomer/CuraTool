@@ -11,6 +11,7 @@ let currentKeyIndex = 0;
 
 const getCurrentApiKey = () => apiKeys[currentKeyIndex];
 
+// Switch to the next API key in the array
 const switchApiKey = () => {
   currentKeyIndex = (currentKeyIndex + 1) % apiKeys.length;
   console.log(`Switched to API key: ${currentKeyIndex + 1}`);
@@ -18,6 +19,7 @@ const switchApiKey = () => {
 
 const apiClient = axios.create();
 
+// Send a query to the Assistant API
 const queryAssistantAPI = async (query) => {
   const baseUrl = process.env.COHERE_API_BASE_URL
 

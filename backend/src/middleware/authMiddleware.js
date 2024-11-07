@@ -1,5 +1,6 @@
 const admin = require('../config/firebaseConfig');
 
+// Verify Firebase authentication token
 const verifyAuth = async (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
 

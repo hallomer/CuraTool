@@ -2,18 +2,12 @@ const mongoose = require('mongoose');
 
 const stepSchema = new mongoose.Schema({
   description: String,
-  imageUrl: {
-    type: String,
-    default: null,
-  },
+  imageUrl: { type: String, default: null },
 });
 
 const materialSchema = new mongoose.Schema({
   name: String,
-  imageUrl: {
-    type: String,
-    default: null,
-  },
+  imageUrl: { type: String, default: null },
 });
 
 const guideSchema = new mongoose.Schema({

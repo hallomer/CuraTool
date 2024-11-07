@@ -6,6 +6,7 @@ cloudinary.config({
   cloudinary_url: process.env.CLOUDINARY_URL,
 });
 
+// Set up Cloudinary storage configuration for multer
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
