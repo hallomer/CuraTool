@@ -43,7 +43,6 @@
 
 .post-button {
   width: 70%;
-  padding: px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -141,6 +140,10 @@
   
 }
 
+.post p {
+  margin-right: 2rem;
+}
+
 .post-header {
   display: flex;
   align-items: center;
@@ -196,6 +199,10 @@
   flex-direction: column;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
+}
+
+.comment .comment-body p {
+  margin-right: 1rem;
 }
 
 .comment-header {
